@@ -1,0 +1,12 @@
+Microsoft Visual Studio Solution File, Format Version 1.00
+Project("{059D6162-CD51-11D0-AE1F-00A0C90FFFC3}") = "Vak", "Vak.dsp", "{E02BD7A0-493D-11D5-8A29-0050FC0C3667}"
+EndProject
+Global
+	GlobalSection(LocalDeployment) = postSolution
+		StartupProject = {00000000-0000-0000-0000-000000000000}
+	EndGlobalSection
+	GlobalSection(BuildOrder) = postSolution
+	EndGlobalSection
+	GlobalSection(DeploymentRoot) = postSolution
+	EndGlobalSection
+EndGlobal

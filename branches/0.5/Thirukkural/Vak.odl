@@ -1,0 +1,42 @@
+// Vak.odl : type library source for Vak.exe
+
+// This file will be processed by the MIDL compiler to produce the
+// type library (Vak.tlb).
+
+[ uuid(E6C784C4-0350-11D5-8A27-0050FC0C3667), version(1.0) ]
+library Vak
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+
+	//  Primary dispatch interface for CVakDoc
+	
+	[ uuid(E6C784C5-0350-11D5-8A27-0050FC0C3667) ]
+	dispinterface IVak
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CVakDlgAutoProxy)
+			//}}AFX_ODL_PROP
+			
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CVakDlgAutoProxy)
+			//}}AFX_ODL_METHOD
+
+	};
+
+	//  Class information for CVakDoc
+	
+	[ uuid(E6C784C3-0350-11D5-8A27-0050FC0C3667) ]
+	coclass Vak
+	{
+		[default] dispinterface IVak;
+	};
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};
