@@ -3,10 +3,14 @@
 
 = Introduction =
 
-Instructions to download and build Tamil TTS by the users
+Instructions to download and build Tamil TTS 
 
 
 = Details =
 
 In order to build the Tamil TTS on your system follow the instructions as given below:
   * Checkout the source code from http://code.google.com/p/text-to-speech/source/browse/#svn/branches/0.5/Thirukkural
+  * Downlaod the speech database from http://ragashri.ee.iisc.ernet.in/tts/
+  * Unzip the database to the Thirukkural directory where the workspace of TTS is present.
+  * Open the workspace vak.dsw and build the program.
+  
