@@ -1,13 +1,12 @@
 #summary Steps to build v0.5 of Tamil TTS
+#labels Phase-Implementation
 
 = Introduction =
 
-Add your content here.
+Instructions to download and build Tamil TTS by the users
 
 
 = Details =
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+In order to build the Tamil TTS on your system follow the instructions as given below:
+  * Checkout the source code from http://code.google.com/p/text-to-speech/source/browse/#svn/branches/0.5/Thirukkural
