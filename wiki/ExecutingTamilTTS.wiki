@@ -17,3 +17,6 @@ User Manual for Tamil TTS
       #3 Speak Button - At the click of the Speak Button, Thirukkural converts text into intelligible speech.
       #4 Repeat Button - The user can hear the synthesized speech repeatedly by clicking the Repeat Button.
       #5 Exit Button - The user can exit Thirukkural by clicking on the Exit Button
+  * Keyboard Layout
+	
+	The keyboard layout followed is Tamil99. It can be downloaded from http://tamilelibrary.org/teli/annex1.htm
