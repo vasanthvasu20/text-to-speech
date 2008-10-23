@@ -17,11 +17,11 @@ Class4=CVakDlgAutoProxy
 ResourceCount=7
 Resource1=IDD_VAK_DIALOG (English (U.S.))
 Resource2=IDR_MAINFRAME
-Resource3=IDD_ABOUTBOX
+Resource3=IDD_VAK_DIALOG
 Resource4=IDD_ABOUTBOX (English (U.S.))
 Class5=CDoc
 Resource5=IDR_MENU1
-Resource6=IDD_VAK_DIALOG
+Resource6=IDD_ABOUTBOX
 Resource7=IDR_ACCELERATOR1
 
 [CLS:CVakApp]
@@ -67,12 +67,13 @@ Filter=N
 [DLG:IDD_VAK_DIALOG]
 Type=1
 Class=CVakDlg
-ControlCount=5
+ControlCount=6
 Control1=IDC_DATA,edit,1352732676
 Control2=IDC_SPEAK,button,1342242816
 Control3=IDC_OPTIONS2,button,1342242816
 Control4=IDC_OPTIONS,button,1342242816
 Control5=IDC_UPDATEDATA,edit,1352734724
+Control6=IDB_BITMAP1,static,1342179854
 
 [DLG:IDD_VAK_DIALOG (English (U.S.))]
 Type=1

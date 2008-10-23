@@ -1,6 +1,24 @@
 // Doc.cpp : implementation file
 //
 
+/**********************************************************************
+ * File:                Doc.cpp  
+ * Description:         Class to generate Speech from text
+ * Author:              Jayavardhana Rama G L and Prathibha P
+ *
+ * (C) Copyright 2008, MILE Lab, IISc.
+ ** Licensed under the Apache License, Version 2.0 (the "License");
+ ** you may not use this file except in compliance with the License.
+ ** You may obtain a copy of the License at
+ ** http://www.apache.org/licenses/LICENSE-2.0
+ ** Unless required by applicable law or agreed to in writing, software
+ ** distributed under the License is distributed on an "AS IS" BASIS,
+ ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ** See the License for the specific language governing permissions and
+ ** limitations under the License.
+ *
+ **********************************************************************/
+
 #include "stdafx.h"
 #include "Vak.h"
 #include "Doc.h"
@@ -730,7 +748,7 @@ int CDoc::ChangeFileName(int length)
 		}
 	}
 	target[length]='\0';
-	char c;
+//	char c;
 	char strTemp[10] = ".wav";
 	char Unit[100];
 	int i1=0;
@@ -762,8 +780,8 @@ void CDoc::KannadaConcatenate()
 	int i,j,temp,Space=0,ind=0;
 	BOOL flagpresent,flagnext;
 	IIScHeader presenthead,nexthead;
-	short int presentsignal[10000],nextsignal[10000],presentpitch[10000],nextpitch[10000],*EndSignal;
-	FILE *parsed,*presentwave,*nextwave,*target,*missing;
+	short int presentsignal[10000],nextsignal[10000],presentpitch[10000],nextpitch[10000];//*EndSignal;
+	FILE *presentwave,*nextwave,*target,*missing;
 	char present[100],next[100],prescan[100],nextscan[100];
 	char Parse[100];
 	char c;
@@ -823,8 +841,8 @@ void CDoc::KannadaConcatenate()
 	target = fopen(X,"wb");
 	int size=0;
 	int duration = 0,Unit=1;
-	int len_present;
-	int pitchmark[300];
+//	int len_present;
+//	int pitchmark[300];
 	//fscanf(parsed,"%s ",&prescan);
 	file.Read(&prescan[0],sizeof(char));
 	i=0;
@@ -1258,484 +1276,6 @@ void CDoc::KannadaConcatenate()
 
 }
 
-/*void CDoc::KannadaConcatenate()
-{
-int i,j,temp,Space=0,ind=0;
-	BOOL flagpresent,flagnext;
-	IIScHeader presenthead,nexthead;
-	short int presentsignal[10000],nextsignal[10000],presentpitch[10000],nextpitch[10000],*EndSignal;
-	FILE *parsed,*presentwave,*nextwave,*target,*missing;
-	char present[100],next[100];
-	char Parse[100];
-	char c;
-	int i1=0;
-	char p[20] = "parse1.iis";
-	do
-	{
-		c = Path.GetAt(i1);
-		if(c == '$')
-			break;
-		Parse[i1]=c;
-		i1++;
-
-	}while(c != '$');
-	Parse[i1] = '\0';
-	
-	strcat(Parse,p);
-	
-	Parse[strlen(Parse)]= '\0';	
-	char Missing[100];
-	char M[20] = "missing.txt";
-	i1=0;
-	do
-	{
-		c = Path.GetAt(i1);
-		if(c == '$')
-			break;
-		Missing[i1]=c;
-		i1++;
-
-	}while(c != '$');
-	Missing[i1] = '\0';
-	strcat(Missing,M);
-	Missing[strlen(Missing)]= '\0';
-	char X[100];
-	//X=new char [100];
-	char x1[20] = "x";
-	i1=0;
-	do
-	{
-		c = Path.GetAt(i1);
-		if(c == '$')
-			break;
-		X[i1]=c;
-		i1++;
-
-	}while(c != '$');
-	X[i1] = '\0';
-	strcat(X,x1);
-	X[strlen(X)]= '\0';
-
-
-	parsed = fopen(Parse,"rt");
-	missing = fopen(Missing,"at");
-	target = fopen(X,"wb");
-	int size=0;
-	int duration = 0,Unit=1;
-	int len_present;
-	int pitchmark[300];
-	fscanf(parsed,"%s ",&present);
-		
-	while(1)
-	{
-		fscanf(parsed,"%s ",&next);
-		
-		// Last Unit
-		if(strcmp(next,"y") == 0 || strcmp(next,"x") == 0 || strcmp(next,"xd") == 0 || strcmp(next,"xq") == 0 || strcmp(next,"xc") == 0 || strcmp(next,"xd") == 0 ||strcmp(next,"xe") == 0)
-		{
-			presentwave = fopen(present,"rb");
-			if(presentwave == NULL)
-				TRACE(" \nNot Present - 1 **** %s" ,present);
-			else
-			{
-				fscanf(presentwave,"%s ",&presenthead.FileID);
-				fscanf(presentwave,"%d ",&presenthead.junk);
-				fscanf(presentwave,"%d ",&presenthead.junk1);
-				fscanf(presentwave,"%u ",&presenthead.LanguageID);
-				fscanf(presentwave,"%u ",&presenthead.BasicUnit);
-				fscanf(presentwave,"%d ",&presenthead.DataLength);
-				fscanf(presentwave,"%d ",&presenthead.AvgPitch);
-				fscanf(presentwave,"%d ",&presenthead.LSegment);
-				fscanf(presentwave,"%d ",&presenthead.RSegment);
-				fscanf(presentwave,"%d\n",&presenthead.LengthofPitchMarks);
-				//presentsignal = new short int [presenthead.DataLength];
-
-				for(i=0;i<presenthead.DataLength;i++)
-					fscanf(presentwave,"%d ",&presentsignal[i]);
-				TRACE("In last");
-				for(i=presenthead.LSegment;i<presenthead.DataLength;i++)
-					fwrite(&presentsignal[i],sizeof(short int),1,target);
-				size = size+presenthead.DataLength-presenthead.LSegment;
-			}
-			if(strcmp(next,"y") == 0)
-			{
-				j=0;
-				for(i=0;i<500;i++)
-					fwrite(&j,sizeof(short int),1,target);
-				size=size+500;
-				break;
-			}
-			else if(strcmp(next,"xd") == 0 || strcmp(next,"xc") == 0 || strcmp(next,"xq") == 0 || strcmp(next,"xe") == 0)
-			{
-				strcpy(present,"x");
-				Unit++;
-				if( Unit == CUnitArray[ind]+1)
-					ind++;
-				
-				j=0;
-				if(strcmp(next,"xc") == 0 )
-				{
-					for(i=0;i<4000;i++)
-					fwrite(&j,sizeof(short int),1,target);
-					size=size+4000;
-				}
-				else
-				{	for(i=0;i<8000;i++)
-						fwrite(&j,sizeof(short int),1,target);
-					size=size+8000;
-				}
-				fscanf(parsed,"%s ",&next);
-				if(strcmp(next,"y") == 0)
-					break;
-				continue;
-			}
-			else
-			{
-				strcpy(present,next);
-				continue;
-			}
-		}
-
-		// First Unit
-		if(strcmp(present,"x") == 0)
-		{
-			j=0;
-			//for(i=0;i<0;i++)
-			//	fwrite(&j,sizeof(short int),1,target);
-			size=size+0;
-			strcpy(present,next);
-			presentwave = fopen(present,"rb");
-			if(presentwave == NULL)
-			{
-				fprintf(missing,"\n%s",present);
-				TRACE("\n Not Present  - 2 ****** %s", present);
-			}
-			else
-			{
-
-				fscanf(presentwave,"%s ",&presenthead.FileID);
-				fscanf(presentwave,"%d ",&presenthead.junk);
-				fscanf(presentwave,"%d ",&presenthead.junk1);
-				fscanf(presentwave,"%u ",&presenthead.LanguageID);
-				fscanf(presentwave,"%u ",&presenthead.BasicUnit);
-				fscanf(presentwave,"%d ",&presenthead.DataLength);
-				fscanf(presentwave,"%d ",&presenthead.AvgPitch);
-				fscanf(presentwave,"%d ",&presenthead.LSegment);
-				fscanf(presentwave,"%d ",&presenthead.RSegment);
-				fscanf(presentwave,"%d\n",&presenthead.LengthofPitchMarks);
-				//presentsignal = new short int [presenthead.DataLength];
-				//presentpitch = new short int [presenthead.DataLength];
-				for(i=0;i<presenthead.DataLength;i++)
-					fscanf(presentwave,"%d ",&presentsignal[i]);
-				TRACE("In first");
-				if(presenthead.BasicUnit != 1 || presenthead.BasicUnit != 3 || presenthead.BasicUnit != 7)
-				{
-					for(i=0;i<presenthead.LSegment;i++)
-						fwrite(&presentsignal[i],sizeof(short int),1,target);
-					size = size+presenthead.LSegment;
-				}
-			}
-			strcpy(present,next);
-			continue;
-		}
-		
-		//Middle Unit
-
-		if(strcmp(present,"x") != 0 && strcmp(next,"x") != 0 && strcmp(present,"y") != 0 && strcmp(next,"y") != 0)
-		{
-			presentwave = fopen(present,"rb");
-			if(presentwave == NULL)
-			{
-				fprintf(missing,"\n%s",present);
-				TRACE("\n Not Present - 3 ******** %s", present);
-				flagpresent = 0;
-			}
-			else
-			{
-				flagpresent = 1;				
-				fscanf(presentwave,"%s ",&presenthead.FileID);
-				fscanf(presentwave,"%d ",&presenthead.junk);
-				fscanf(presentwave,"%d ",&presenthead.junk1);
-				fscanf(presentwave,"%u ",&presenthead.LanguageID);
-				fscanf(presentwave,"%u ",&presenthead.BasicUnit);
-				fscanf(presentwave,"%d ",&presenthead.DataLength);
-				fscanf(presentwave,"%d ",&presenthead.AvgPitch);
-				fscanf(presentwave,"%d ",&presenthead.LSegment);
-				fscanf(presentwave,"%d ",&presenthead.RSegment);
-				fscanf(presentwave,"%d\n",&presenthead.LengthofPitchMarks);
-				//presentsignal = new short int [presenthead.DataLength];
-				//presentpitch = new short int [presenthead.DataLength];
-				for(i=0;i<presenthead.DataLength;i++)
-					fscanf(presentwave,"%d ",&presentsignal[i]);
-				for(i=0;i<presenthead.DataLength;i++)
-					presentpitch[i]=0;
-				for(i=0;i<presenthead.LengthofPitchMarks;i++)
-				{
-					fscanf(presentwave,"%d ",&temp);
-					presentpitch[temp] = 1;
-				
-				}
-			}
-
-			nextwave = fopen(next,"rb");
-			if(nextwave == NULL)
-			{
-				fprintf(missing,"\n%s",next);
-				TRACE("\n Not Present - 4 ******** %s", next);
-				flagnext=0;
-			}
-			else
-			{
-				flagnext=1;
-				fscanf(nextwave,"%s ",&nexthead.FileID);
-				fscanf(nextwave,"%d ",&nexthead.junk);
-				fscanf(nextwave,"%d ",&nexthead.junk1);
-				fscanf(nextwave,"%u ",&nexthead.LanguageID);
-				fscanf(nextwave,"%u ",&nexthead.BasicUnit);
-				fscanf(nextwave,"%d ",&nexthead.DataLength);
-				fscanf(nextwave,"%d ",&nexthead.AvgPitch);
-				fscanf(nextwave,"%d ",&nexthead.LSegment);
-				fscanf(nextwave,"%d ",&nexthead.RSegment);
-				fscanf(nextwave,"%d\n",&nexthead.LengthofPitchMarks);
-
-				//nextsignal = new short int [nexthead.DataLength];
-				//nextpitch = new short int [nexthead.DataLength];
-				
-				for(i=0;i<nexthead.DataLength;i++)
-					fscanf(nextwave,"%d ",&nextsignal[i]);
-				for(i=0;i<nexthead.DataLength;i++)
-					nextpitch[i]=0;
-				
-				for(i=0;i<nexthead.LengthofPitchMarks;i++)
-				{
-					fscanf(nextwave,"%d ",&temp);
-					nextpitch[temp] = 1;
-				}
-			}
-
-			strcpy(ToDuration,present);
-			int duration = DetectDuration();
-			int tempduration=0;
-			int initial_p = 0;
-			int final_p = 0;
-			int minimum = 0;
-			int min_ind = 0;
-			int min_ene = 0;
-			int min_eind = 0;
-			static int div_part = 8;
-			int energy[8];
-				
-
-			if(flagpresent == 1)
-			{
-				if(presenthead.BasicUnit == 2)
-				{
-					if(duration/2 < presenthead.DataLength-presenthead.LSegment)
-						tempduration = duration/2;
-					else 
-						tempduration = presenthead.DataLength-presenthead.LSegment;
-					i=0;
-					initial_p = 0;
-					final_p = 0;
-					minimum = 0;
-					//for(i=0;i<presenthead.DataLength/2;i++)
-					//	TRACE("i = %d, presentpitch = %d\t",i,presentpitch[i]);
-					while(1)
-					{
-						
-						if(presentpitch[i] == 1 && i>presenthead.LSegment+tempduration)
-						{
-							initial_p=i;
-							TRACE("onitial_p = %d",initial_p);
-							i++;
-							while(presentpitch[i] != 1 && i>presenthead.LSegment+tempduration && i<presenthead.DataLength)
-							{
-								i++;
-							}
-							final_p = i;	
-							TRACE("final_p = %d",final_p);
-//Fine till here
-							for(int z=0;z<div_part;z++)
-								energy[z] = 0;
-							z=0;
-							for(int m = initial_p; m<final_p;m+=(final_p-initial_p)/div_part)
-							{
-								for(int p = m;p<m+(final_p-initial_p)/div_part;p++)
-									energy[z] = energy[z] + presentsignal[p] * presentsignal[p];
-								z++;
-							}
-							min_ene = energy[0];
-							min_eind = 0;
-							for(z=0;z<div_part;z++)
-								if (min_ene>energy[z])
-								{
-									min_ene = energy[z];
-									min_eind = z;
-								}
-							minimum = presentsignal[initial_p+min_eind * (final_p-initial_p)/div_part];
-							min_ind = initial_p+min_eind * (final_p-initial_p)/div_part;
-							for(z = initial_p+min_eind * (final_p-initial_p)/div_part;z<(initial_p+min_eind * (final_p-initial_p)/div_part) + (final_p-initial_p)/div_part;z++)
-							{	
-								if(minimum<abs(presentsignal[z]))
-								{
-									minimum = abs(presentsignal[z]);
-									min_ind = z;
-								}
-							}
-
-							tempduration=min_ind-presenthead.LSegment;
-							break;
-						}
-						i++;
-					}
-					for(i=presenthead.LSegment;i<presenthead.LSegment+tempduration;i++)
-						fwrite(&presentsignal[i],sizeof(short int),1,target);
-
-					size = size+tempduration;
-
-				}
-
-				if(presenthead.BasicUnit == 4 || presenthead.BasicUnit == 5 || presenthead.BasicUnit == 6)
-				{
-					for(i=presenthead.LSegment;i<presenthead.RSegment;i++)
-						fwrite(&presentsignal[i],sizeof(short int),1,target);
-					size = size+presenthead.RSegment-presenthead.LSegment;
-
-					if(duration/2 < presenthead.DataLength-presenthead.RSegment)
-						tempduration = duration/2;
-					else 
-						tempduration = presenthead.DataLength-presenthead.RSegment;
-
-					i=0;
-					initial_p = 0;
-					final_p = 0;
-					minimum = 0;
-					while(1)
-					{
-						if(presentpitch[i] == 1 && i>presenthead.RSegment+tempduration)
-						{
-							initial_p=i;
-							i++;
-							while(presentpitch[i] != 1 && i>presenthead.RSegment+tempduration && i<presenthead.DataLength)
-							{
-								i++;
-							}
-							final_p = i;	
-							TRACE("\n Init = %d Final = %d",initial_p,final_p);
-							for(int z=0;z<div_part;z++)
-								energy[z] = 0;
-							z=0;
-							for(int m = initial_p; m<final_p;m+=(final_p-initial_p)/div_part)
-							{
-								for(int p = m;p<m+(final_p-initial_p)/div_part;p++)
-									energy[z] = energy[z] + presentsignal[p] * presentsignal[p];
-								z++;
-							}
-							min_ene = energy[0];
-							min_eind = 0;
-							for(z=0;z<div_part;z++)
-								if (min_ene>energy[z])
-								{
-									min_ene = energy[z];
-									min_eind = z;
-								}
-							minimum = presentsignal[initial_p+min_eind * (final_p-initial_p)/div_part];
-							min_ind = initial_p+min_eind * (final_p-initial_p)/div_part;
-							for(z = initial_p+min_eind * (final_p-initial_p)/div_part;z<(initial_p+min_eind * (final_p-initial_p)/div_part) + (final_p-initial_p)/div_part;z++)
-							{	
-								if(minimum<abs(presentsignal[z]))
-								{
-									minimum = abs(presentsignal[z]);
-									min_ind = z;
-								}
-							}
-
-							tempduration=min_ind-presenthead.RSegment;
-
-							break;
-						}
-						i++;
-					}
-					for(i=presenthead.RSegment;i<presenthead.RSegment+tempduration;i++)
-						fwrite(&presentsignal[i],sizeof(short int),1,target);
-
-					size = size+tempduration;
-				}
-				flagpresent=0;
-			}
-			tempduration=0;
-			if(flagnext == 1)
-			{
-				if(duration/2 < nexthead.LSegment)
-					tempduration = duration/2;
-				else 
-					tempduration = nexthead.LSegment;
-						
-				i=0;
-					initial_p = 0;
-					final_p = 0;
-					minimum = 0;
-					while(1)
-					{
-						if(nextpitch[i] == 1 && i>nexthead.LSegment-tempduration)
-						{
-							initial_p=i;
-							i++;
-							while(nextpitch[i] != 1 && i>nexthead.LSegment-tempduration && i<nexthead.DataLength)
-							{
-								i++;
-							}
-							final_p = i;	
-							TRACE("\n Init = %d Final = %d",initial_p,final_p);
-							for(int z=0;z<div_part;z++)
-								energy[z] = 0;
-							z=0;
-							for(int m = initial_p; m<final_p;m+=(final_p-initial_p)/div_part)
-							{
-								for(int p = m;p<m+(final_p-initial_p)/div_part;p++)
-									energy[z] = energy[z] + nextsignal[p] * nextsignal[p];
-								z++;
-							}
-							min_ene = energy[0];
-							min_eind = 0;
-							for(z=0;z<div_part;z++)
-								if (min_ene>energy[z])
-								{
-									min_ene = energy[z];
-									min_eind = z;
-								}
-							minimum = nextsignal[initial_p+min_eind * (final_p-initial_p)/div_part];
-							min_ind = initial_p+min_eind * (final_p-initial_p)/div_part;
-							for(z = initial_p+min_eind * (final_p-initial_p)/div_part;z<(initial_p+min_eind * (final_p-initial_p)/div_part) + (final_p-initial_p)/div_part;z++)
-							{	
-								if(minimum<abs(nextsignal[z]))
-								{
-									minimum = abs(nextsignal[z]);
-									min_ind = z;
-								}
-							}
-							tempduration=nexthead.LSegment - min_ind;
-						break;
-					}
-					i++;
-				}
-
-				TRACE("\n\n Next Temp Duration = %d ",tempduration);
-				
-				for(i=nexthead.LSegment-tempduration;i<nexthead.LSegment;i++)
-					fwrite(&nextsignal[i],sizeof(short int),1,target);
-				size = size+tempduration;
-				flagnext=0;
-			}
-			
-			strcpy(present,next);
-		}
-	}
-	SizeOfSentance = size;
-	fcloseall();
-	TRACE("\nOut of Concatenate %d\n",SizeOfSentance);
-	WriteWaveFile();
-}*/
 
 
 void CDoc::WriteWaveFile()

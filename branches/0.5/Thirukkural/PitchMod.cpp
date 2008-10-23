@@ -1,7 +1,23 @@
 // PitchMod.cpp: implementation of the PitchMod class.
 //
 //////////////////////////////////////////////////////////////////////
-
+/**********************************************************************
+ * File:                PitchMod.cpp  
+ * Description:         Pitch marking and pitch modification 
+ * Author:              Jayavardhana Rama G L 
+ *
+ * (C) Copyright 2008, MILE Lab, IISc.
+ ** Licensed under the Apache License, Version 2.0 (the "License");
+ ** you may not use this file except in compliance with the License.
+ ** You may obtain a copy of the License at
+ ** http://www.apache.org/licenses/LICENSE-2.0
+ ** Unless required by applicable law or agreed to in writing, software
+ ** distributed under the License is distributed on an "AS IS" BASIS,
+ ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ ** See the License for the specific language governing permissions and
+ ** limitations under the License.
+ *
+ **********************************************************************/
 #include "stdafx.h"
 #include "Vak.h"
 #include "PitchMod.h"
@@ -147,7 +163,7 @@ void PitchMod::Modification()
 		for(i=0;i<len;i++)
 		{
 
-            Modifx[pml]=(sqrt(1.0*frame_l/len) * y[i]);
+            Modifx[pml]=short(sqrt(1.0*frame_l/len) * y[i]);
 			len_modifx++;
 			pml=pml+1;
 		}
