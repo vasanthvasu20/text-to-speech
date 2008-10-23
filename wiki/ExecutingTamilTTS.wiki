@@ -1,6 +1,5 @@
-#summary Execute Thirukkural(Tamil TTS)
+#summary How to run the software?
 #labels Phase-Implementation,Phase-QA
-
 = Introduction =
 
 User Manual for Tamil TTS
@@ -9,12 +8,12 @@ User Manual for Tamil TTS
 
   * Once the build is complete execute the program
 
-  * TTS dialog box appears on the screen where in the user can type in Tamil using TAB   keyboard layout
+  * TTS dialog box appears on the screen.
 
   * The GUI has 
 
-      1.Tamil Edit Box - Tamil Edit Box is a read-only box which displays tamil text. This displays text as per Tamilnet99 keyboard. 
-      2.English Edit Box - This is the user edit box. The display is in English and it gets updated to Tamil in the Tamil Edit box as we type in this box.
-      3.Speak Button - At the click of the Speak Button, Thirukkural converts text into intelligible speech.
-      4.Repeat Button - The user can hear the synthesized speech repeatedly by clicking the Repeat Button.
-      5.Exit Button - The user can exit Thirukkural by clicking on the Exit Button
+      #1.Tamil Edit Box - Tamil Edit Box is a read-only box which displays tamil text. This displays text as per Tamilnet99 keyboard. 
+      #2.English Edit Box - This is the user edit box. The display is in English and it gets updated to Tamil in the Tamil Edit box as we type in this box.
+      #3.Speak Button - At the click of the Speak Button, Thirukkural converts text into intelligible speech.
+      #4.Repeat Button - The user can hear the synthesized speech repeatedly by clicking the Repeat Button.
+      #5.Exit Button - The user can exit Thirukkural by clicking on the Exit Button
