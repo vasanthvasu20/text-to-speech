@@ -1,0 +1,18 @@
+#summary Execute Thirukkural(Tamil TTS)
+
+= Introduction =
+
+Instruction to run the code
+
+
+= Details =
+
+  * Once the build is complete execute the program
+  * TTS dialog box appears on the screen where in the user can type in Tamil using TAB   keyboard layout
+  * The GUI has 
+      1.Tamil Edit Box - 
+      2.English Edit Box
+      3.Speak Button 
+      4.Repeat Button
+      5.Exit Button
+  * Automatic links to other wiki pages
