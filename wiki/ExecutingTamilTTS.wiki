@@ -1,4 +1,4 @@
-#summary How to run the software?
+#summary User Manual
 #labels Phase-Implementation,Phase-QA
 = Introduction =
 
