@@ -10,12 +10,12 @@ Product Specification of Tamil TTS
 ===Features :===
 
 The application has the following features
-*It supports Tamilnet99 keyboard layout
-*It supports any text in TAB format
-*It supports any text in Tamil ISCII format
-*The synthesized speech is in Male voice
-*The system can synthesize digits present in the text 
-*The system can synthesize proper nouns and generalized words from other languages commonly used by Tamil-speaking population
+
+* It supports Tamilnet99 keyboard layout
+* It supports any text in TAB format
+* The synthesized speech is in Male voice
+* The system can synthesize digits present in the text 
+* The system can synthesize proper nouns and generalized words from other languages commonly used by Tamil-speaking population
 
 ===Required System:===
 The application can run on computers with following minimum configuration
