@@ -1,5 +1,4 @@
 #summary Steps to build v0.5 of Tamil TTS
-#labels Phase-Implementation
 
 = Introduction =
 
@@ -18,7 +17,9 @@ In order to build Tamil TTS on your system follow the instructions as given belo
 
   * Unzip the database to the Thirukkural directory where the workspace of TTS is present.
 
-  * Open the workspace vak.dsw and build the program.
+  * Thirukkural(Tamil TTS) is built on VC++. 
+
+  * Open the workspace vak.dsw which is in Thirukkural directory and build the program.
 
 
   
