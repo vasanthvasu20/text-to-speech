@@ -17,11 +17,11 @@ Class4=CVakDlgAutoProxy
 ResourceCount=7
 Resource1=IDD_VAK_DIALOG (English (U.S.))
 Resource2=IDR_MAINFRAME
-Resource3=IDD_VAK_DIALOG
+Resource3=IDD_ABOUTBOX
 Resource4=IDD_ABOUTBOX (English (U.S.))
 Class5=CDoc
-Resource5=IDR_MENU1
-Resource6=IDD_ABOUTBOX
+Resource5=IDD_VAK_DIALOG
+Resource6=IDR_MENU1
 Resource7=IDR_ACCELERATOR1
 
 [CLS:CVakApp]
