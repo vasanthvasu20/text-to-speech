@@ -11,7 +11,7 @@ Instructions to run Tamil exe file uploaded to the downloads page
 
   # Create a new folder(Ex TamilTTS).
 
-  2. Download the exe file to the folder(TamilTTS) you have created.
+ 2. Download the exe file to the folder(TamilTTS) you have created.
 
   3. Download the file a.wav to the same folder(TamilTTS).
 
