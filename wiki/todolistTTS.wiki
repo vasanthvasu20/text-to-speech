@@ -1,0 +1,23 @@
+#summary To Do list
+
+= Introduction =
+
+To Do List of TTS
+
+= Details =
+
+  1. a. Wiki - Build instruction
+     b. exe downloadable from website
+     c. usage instructions on wiki
+
+  2. Compress audio files
+
+  3. R Ravi Driven project guided by Prathibha
+     File system to "in memory database"
+
+  4. a. VC++ to Java migration
+     b. Linux Down loadable
+
+  5 Merge code streams
+  
+  6.Web Demo for TTS
