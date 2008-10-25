@@ -6,17 +6,18 @@ To Do List of TTS
 
 = Details =
 
-  1. a. Wiki - Build instruction
-     b. exe downloadable from website
-     c. usage instructions on wiki
+  1. Upload TTS code 
+     * Wiki - Build instruction
+     * exe downloadable from website
+     * usage instructions on wiki
 
   2. Compress audio files
 
-  3. R Ravi Driven project guided by Prathibha
-     File system to "in memory database"
+  3. R Ravi Driven project guided by Prathibha - File system to "in memory database"
 
-  4. a. VC++ to Java migration
-     b. Linux Down loadable
+  4. UI in Java
+     * VC++ to Java migration
+     * Linux Downloadable
 
   5 Merge code streams
   
